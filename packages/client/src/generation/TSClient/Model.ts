@@ -325,7 +325,7 @@ ${indent(
 )}
 }
 ${includeType}
-${new PayloadType(this.outputType, !this.dmmf.typeMap[model.name]).toTS()}
+${new PayloadType(this.outputType, this.dmmf).toTS()}
 
 ${new ModelDelegate(this.outputType, this.dmmf, this.generator).toTS()}
 
@@ -395,7 +395,7 @@ ${
 `
     : ''
 }
-export interface ${name}Delegate<GlobalRejectSettings> {
+export interface ${name}Delegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
 ${indent(
   nonAggregateActions
     .map(
@@ -570,3 +570,5 @@ ${f.name}<T extends ${getFieldArgName(f, !this.dmmf.typeMap[fieldTypeName])} = {
 }`
   }
 }
+
+type t = Buffer
