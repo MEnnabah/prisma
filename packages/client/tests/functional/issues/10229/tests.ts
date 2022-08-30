@@ -32,5 +32,9 @@ testMatrix.setupTestSuite(
         sqlserver: returns undefined
       `,
     },
+    skipDataProxy: {
+      runtimes: ['node', 'edge'],
+      reason: 'InvalidDatasourceError: Datasource URL must use prisma:// protocol when --data-proxy is used',
+    },
   },
 )
